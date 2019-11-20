@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<style type="text/css">
+.backgrounds{
+    background-image: url(img/1111.jpg);
+    
+    width:100%;
+    height: 768px;
+    border: 1px solid black;
+}
+.logo{
+    width: 800px;
+    height: 150px;
+    margin-left: 100px;
+}
+.logo img{
+    width: 120px;
+    height: 120px;
+    margin-left: 130px;
+    margin-top: 20px;
+
+}
+.lol{
+    float: right;
+    font-size: 40px;
+    margin-top: 30px;
+}
+.match{
+    width: 800px;
+    height: 60px;
+    margin: auto;
+}
+
+.eight-strong{
+    margin-top: 20px;
+    float: left;
+    width: 50px;
+    height: 30px;
+    margin-left: 150px;
+    font-size: 25px;
+    
+}
+.four-strong{
+    margin-top: 20px;
+    float: left;
+    width: 50px;
+    height: 30px;
+    margin-left: 150px;
+    font-size: 25px;
+    
+}
+.finals{
+    font-size: 25px;
+    margin-top: 20px;
+    float: left;
+    width: 50px;
+    height: 30px;
+    margin-left: 150px;
+    
+}
+.finals a{
+    text-decoration:none;
+}
+.four-strong a{
+    text-decoration:none;
+}
+.eight-strong a{
+    text-decoration:none;
+}
+</style>
+</head>
+<body>
+    <div class="logo">
+    <img src="img/LOGO.jpg">
+    <div class="lol">英雄联盟全球总决赛<br>2019.10.02-2019.11.10</div>
+    </div>
+    <div class="match">
+    <div class="eight-strong"><a href="#">八强</a></div> 
+    <div class="four-strong"><a href="#">四强</a></div>  
+    <div class="finals"><a href="#">决赛</a></div>   
+    </div>
+<div class="backgrounds">
+</div>
+
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+ $(".eight-strong a").click(function(event){
+	 event.preventDefault();
+	 $.get("eightstrong",{	 
+		 },function(data){		 
+			 $(".backgrounds").html(data);
+		 })	 
+ })
+  $(".four-strong a").click(function(event){
+	 event.preventDefault();
+	 $.get("fourstrong",{	 
+		 },function(data){		 
+			 $(".backgrounds").html(data);
+		 })	 
+ })
+  $(".finals a").click(function(event){
+	 event.preventDefault();
+	 $.get("finals",{	 
+		 },function(data){		 
+			 $(".backgrounds").html(data);
+		 })	 
+ })
+
+</script>
+</body>
+</html>

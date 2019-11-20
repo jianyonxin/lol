@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<style type="text/css">
+.confrontation{
+    float: left;
+    width: 856px;
+    height: 115px;
+    border: 1px solid black;
+    margin-left: 250px;
+    margin-top: 20px;
+}
+.img img{
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 64px;
+    height: 66px;
+}
+.imgtwo img{
+    float: right;
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 64px;
+    height: 66px;
+    margin-top: -90px;
+    margin-right: 30px;
+}
+.name{
+    width: 40px;
+    height: 20px;
+    margin-left: 50px;
+}
+.nametwo{
+    float: right;
+    width: 40px;
+    height: 20px;
+    margin-left: 50px;
+    margin-right: 35px;
+    margin-top: -20px;
+}
+.vs{
+    font-size: 100px;
+    color:red;
+    float: left;
+    width: 330px;
+    height: 84px;
+    margin-left: 350px;
+    margin-top: -130px;
+}
+.vs a{
+    font-size: 100px;
+    color:red;
+    text-decoration:none;
+}
+.score{
+	float: right;
+	margin-right:610px;
+	
+}
+</style>
+</head>
+<body>
+
+<div class="confrontation" th:each="cmbatTeams:${cmbatTeam}">
+    <div class="img"><img  th:src="${cmbatTeams.img}"></div>
+    <div class="name" th:text="${cmbatTeams.name}"></div>
+    <div class="vs"><a th:href="${cmbatTeams.score_id}">vs</a></div>
+    <div class="imgtwo"><img th:src="${cmbatTeams.imgtwo}"></div>
+    <div class="nametwo" th:text="${cmbatTeams.nametwo}"></div> 
+</div>
+ <div class="score"></div>
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+ $(".vs a").click(function(event){
+	 event.preventDefault();
+	 var id = $(this).attr('href');
+	 $.get("scroe",{	
+		 id:id
+		 },function(data){		 
+			 $(".score").html(data);
+		 })	 
+ })
+ </script>
+</body>
+</html>
